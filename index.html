@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Vue计算属性</title>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<div id="box">
+   <p class="text-danger mb-0">Message：</p>
+   <p v-html="message"></p>
+   <p class="text-danger mb-0">reversedMessage：[放在computed里]</p>
+   <p v-html="reversedMessage"></p>
+   <p class="text-danger mb-0">reversedMessage2()：[放在methods里]</p>
+   <p v-html="reversedMessage2()"></p>
+</div>
+
+<script>
+
+    /*
+    *computed //立即执行函数
+    * */
+    new Vue({
+        el: '#box',
+        data: {
+           message:'hello'
+        },
+        computed:{
+            reversedMessage:function(){
+                return this.message.split('').reverse().join('')
+            }
+        },
+        methods: {
+            reversedMessage2:function(){
+                return this.message.split('').reverse().join('')
+            }
+        },
+        created() {
+            //可用于loading页面加载结束后做一些初始化，实现函数自执行
+        },
+        mounted() {
+            //一般用于向后台发送数据
+        },
+    })
+</script>
+</body>
+</html>
